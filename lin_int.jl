@@ -1,20 +1,32 @@
 function lin_int(grid,vals)
+    n = length(grid)
     function func(x)
-        if x<grid[1]
+        if x < grid[1]
             return "error"
         end
-        if x>grid[n]
+        if x > grid[n]
             return "error"
         end
-        for x=grid[n]
+        if x == grid[n]
             return vals[n]
         end
-        if grid[1]<=x<length(grid)
-    z=searchsortedlast(grid,x)
-    slope=(vals[z+1]-vals[z])/(grid[z+1]-grid[z])
-    y=slope*(x-grid[z])+vals[z]
+        if grid[1] <= x < length(grid)
+            z = searchsortedlast(grid,x)
+            slope = (vals[z+1]-vals[z])/(grid[z+1]-grid[z])
+            y = slope*(x-grid[z])+vals[z]
         return y
         end
     end
+    
+    function func{T<:Real}(x::AbstractVector{T})
+        n = length(x)
+        out = Array(Any, n)
+        fill!(out,0.0)
+        for i in 1:n
+            out[i] = func(x[i])
+        end
+        return out
+    end
+    
     return func
 end
