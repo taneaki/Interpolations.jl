@@ -1,14 +1,13 @@
 function lin_int(grid,vals)
-    n = length(grid)
     function func(x)
         if x < grid[1]
             return "error"
         end
-        if x > grid[n]
+        if x > grid[end]
             return "error"
         end
-        if x == grid[n]
-            return vals[n]
+        if x == grid[end]
+            return vals[end]
         end
         if grid[1] <= x < length(grid)
             z = searchsortedlast(grid,x)
