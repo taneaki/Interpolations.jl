@@ -16,16 +16,5 @@ function lin_int(grid,vals)
         return y
         end
     end
-    
-    function func{T<:Real}(x::AbstractVector{T})
-        n = length(x)
-        out = Array(Any, n)
-        fill!(out,0.0)
-        for i in 1:n
-            out[i] = func(x[i])
-        end
-        return out
-    end
-    
     return func
 end
