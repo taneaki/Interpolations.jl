@@ -1,5 +1,7 @@
 module MyInterpolations
 
+export lin_int
+
 function lin_int(grid,vals)
     function func(x)
         if x < grid[1]
@@ -20,7 +22,5 @@ function lin_int(grid,vals)
     end
     return func
 end
-
-export lin_int
 
 end
